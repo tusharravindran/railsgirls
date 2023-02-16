@@ -3,8 +3,11 @@
     <a class="navbar-brand" href="/">Display My Ideas</a>
   </div>
 </nav>
-<div id="ideas">
+
+<div class="list-group w-auto">
   <% @ideas.each do |idea| %>
     <%= render idea %>
   <% end %>
 </div>
+
+<%= link_to "Add a new idea", new_idea_path, class: "btn btn-primary mb-3" %>
