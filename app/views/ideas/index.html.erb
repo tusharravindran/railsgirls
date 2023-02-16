@@ -1,0 +1,10 @@
+ <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Display My Ideas</a>
+  </div>
+</nav>
+<div id="ideas">
+  <% @ideas.each do |idea| %>
+    <%= render idea %>
+  <% end %>
+</div>
