@@ -7,10 +7,9 @@ RSpec.describe Idea, type: :model do
     idea = Idea.create!(name: "My Awesome Idea Name")
     comment = Comment.create!(
       user_name: "My name",
-      body: "",
+      body: "My name2.0",
       idea: idea # Link the comment to the idea
     )
-
     expect(comment.idea).to eq(idea)
   end
 end
