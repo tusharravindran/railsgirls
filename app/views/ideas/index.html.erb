@@ -6,7 +6,17 @@
 
 <div class="list-group w-auto">
   <% @ideas.each do |idea| %>
-    <%= render idea %>
+    <div class="list-group-item">
+      <h5 class="mb-1"><%= link_to idea.name, idea %></h5>
+      <p class="mb-1"><%= truncate(idea.description, length: 100) %></p>
+      <div class="">
+        <% if idea.picture? %>
+          <%= image_tag idea.picture.url(:thumb), class: "img-thumbnail float-right" %>
+        <% end %>
+      </div>
+
+    </div>
+
   <% end %>
 </div>
 

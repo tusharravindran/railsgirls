@@ -1,15 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Idea, type: :model do
-  # Your other tests here...
+  describe "associations" do
+    it{ is_expected.to have_many(:comments) } 
+    it{ is_expected.to validate_presence_of :name }
+    it{ is_expected.to belong_to(:user) }
 
-  it "has comments" do
-    idea = Idea.create!(name: "My Awesome Idea Name")
-    comment = Comment.create!(
-      user_name: "My name",
-      body: "My name2.0",
-      idea: idea # Link the comment to the idea
-    )
-    expect(comment.idea).to eq(idea)
   end
 end

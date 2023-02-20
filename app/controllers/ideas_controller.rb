@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
 
   # GET /ideas or /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas
   end
 
   # GET /ideas/1 or /ideas/1.json
@@ -13,7 +13,11 @@ class IdeasController < ApplicationController
 
   # GET /ideas/new
   def new
-    @idea = Idea.new
+    if user_signed_in?
+      @idea = Idea.new
+    else
+      redirect_to new_user_session_path, alert: "Please sign in first"
+    end
   end
 
   # GET /ideas/1/edit
@@ -23,6 +27,7 @@ class IdeasController < ApplicationController
   # POST /ideas or /ideas.json
   def create
     @idea = Idea.new(idea_params)
+    @idea.user_id = current_user.id # Set the user_id to the ID of the current user
 
     respond_to do |format|
       if @idea.save
